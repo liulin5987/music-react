@@ -1,6 +1,9 @@
 import discover from '@/pages/discover'
 import mine from '@/pages/mine'
 import friend from '@/pages/friend'
+import mall from '@/pages/mall'
+import musicer from '@/pages/musicer'
+import download from '@/pages/download'
 
 const routers = [
   {
@@ -9,15 +12,29 @@ const routers = [
     component: discover
   },
   {
+    path: '/discover',
+    component: discover
+  },
+  {
     path: '/mine',
-    exact: true,
     component: mine
   },
   {
     path: '/friend',
-    exact: true,
     component: friend
-  }
+  },
+  {
+    path: '/mall',
+    component: mall
+  },
+  {
+    path: '/musicer',
+    component: musicer
+  },
+  {
+    path: '/download',
+    component: download
+  },
 ]
 
 export default routers
