@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.div`
   .content {
     height: 70px;
     display: flex;
-    .icon {
+    .logo {
       display: block;
       width: 177px;
       height: 69px;
@@ -47,9 +47,6 @@ export const HeaderWrapper = styled.div`
         color: #fff;
         background: #000;
         text-decoration: none;
-      }
-      .icon {
-        display: none;
       }
       .active .icon {
         position: absolute;

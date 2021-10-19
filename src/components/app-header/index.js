@@ -22,7 +22,7 @@ export default memo(function MRAppHeader() {
   return (
     <HeaderWrapper>
       <div className='content wrap-v1'>
-        <a className='icon sprite_01' href='#/'>
+        <a className='logo sprite_01' href='#/'>
           wyMusic
         </a>
         <div className='navs'>
