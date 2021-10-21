@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo,Fragment } from 'react'
 
 import { footerLinks, footerImages } from '@/common/local-data.js'
 
@@ -12,8 +12,8 @@ export default memo(function MRAppFooter() {
           <div className='policy'>
             {footerLinks.map((item, index) => {
               return (
-                <>
-                  <a href={item.link} key={item.title}>
+                <Fragment key={item.title}>
+                  <a href={item.link}>
                     {item.title}
                   </a>
                   {index < footerLinks.length - 1 ? (
@@ -21,7 +21,7 @@ export default memo(function MRAppFooter() {
                   ) : (
                     ''
                   )}
-                </>
+                </Fragment>
               )
             })}
           </div>
@@ -59,8 +59,8 @@ export default memo(function MRAppFooter() {
         </MRFooterRight>
         <MRFooterLeft>
           {footerImages.map((item) => (
-            <div className="item">
-              <a href={item.link} className="link"></a>
+            <div className="item" key={item.title}>
+              <a href={item.link} className="link"> </a>
               <span>{item.title}</span>
             </div>
           ))}
