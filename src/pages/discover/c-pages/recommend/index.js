@@ -4,6 +4,10 @@ import React, { memo } from 'react'
 // import { getBanners } from '../../../../services/recommend'
 // import { getTopBannersAction } from './store/actionCreaters'
 import MRTopBanners from './c-cpns/top-banners'
+import MRHotRecommend from './c-cpns/hot-recommend'
+import MRNewAlbum from './c-cpns/new-album'
+import MRRankList from './c-cpns/rank-list'
+import { Content, ContentRight, ContentLeft } from './style'
 
 function MRRecommend(props) {
   // const { topBanners } = useSelector(state => ({
@@ -22,6 +26,14 @@ function MRRecommend(props) {
   return (
     <div>
       <MRTopBanners></MRTopBanners>
+      <Content className="wrap-v2">
+        <ContentLeft>
+          <MRHotRecommend></MRHotRecommend>
+          <MRNewAlbum></MRNewAlbum>
+          <MRRankList></MRRankList>
+        </ContentLeft>
+        <ContentRight></ContentRight>
+      </Content>
       {
         // topBanners.map(item => {
         //   return <div className="banner" key={item.targetId}>{item.targetId}</div>

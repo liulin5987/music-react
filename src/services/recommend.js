@@ -5,3 +5,12 @@ export function getBanners() {
     url: "/banner"
   })
 }
+
+export function getRecommend(limit) {
+  return request({
+    url: "/personalized",
+    params: {
+      limit
+    }
+  })
+}
