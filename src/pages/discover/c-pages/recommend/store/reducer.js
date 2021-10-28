@@ -7,7 +7,8 @@ import * as actionTypes from './constants'
 
 const defaultState = Map({
   topBanners: [],
-  recommends: []
+  recommends: [],
+  albums: []
 })
 
 const reducer = function(state = defaultState, action) {
@@ -17,7 +18,9 @@ const reducer = function(state = defaultState, action) {
       // console.log('传入的数据', action.topBanners)
       // return {...state, 'topBanners': action.topBanners}
     case actionTypes.CHANGE_RECOMMENDS:
-      return state.set('recommends', action.recommends)  
+      return state.set('recommends', action.recommends)
+    case actionTypes.CHANGE_ALBUM:
+      return state.set('albums', action.albums)
     default:
       return state  
   }

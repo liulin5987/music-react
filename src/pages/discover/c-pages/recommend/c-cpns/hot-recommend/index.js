@@ -31,7 +31,6 @@ export default memo(function MRHotRecommend() {
       <SongsWrapper>
         {recommend.map((item) => {
           return <MRSong key={item.id} info={item} />
-          // <img src={item.picUrl} alt="" className="cover" />
         })}
       </SongsWrapper>
     </div>
