@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-// import { getCount, getSizeImage } from "@/utils/format-utils";
+import { getCount, getSizeImage } from "@/utils/format-utils";
 
 import { SongsCoverWrapper } from './style';
 
@@ -10,14 +10,12 @@ export default memo(function HYSongsCover(props) {
   return (
     <SongsCoverWrapper>
       <div className="cover-top">
-        {/* <img src={getSizeImage(info.picUrl, 140)} alt="" /> */}
-        <img src={info.picUrl} alt="" />
+        <img src={getSizeImage(info.picUrl, 140)} alt="" />
         <div className="cover sprite_covor">
           <div className="info sprite_covor">
             <span>
               <i className="sprite_icon erji"></i>
-              {/* {getCount(info.playCount)} */}
-              {info.playCount}
+              {getCount(info.playCount)}
             </span>
             <i className="sprite_icon play"></i>
           </div>

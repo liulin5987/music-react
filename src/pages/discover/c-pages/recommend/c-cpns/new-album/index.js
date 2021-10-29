@@ -33,7 +33,7 @@ export default memo(function MRNewAlbum() {
           <Carousel dots={false} ref={pageRef}>
             {[0, 5].map((item) => {
               return (
-                <div className='albums'>
+                <div className='albums' key={item}>
                   {albums.slice(item, item + 5).map((aItem) => {
                     return (
                       <MRAlbum
