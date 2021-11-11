@@ -7,6 +7,7 @@ import MRTopBanners from './c-cpns/top-banners'
 import MRHotRecommend from './c-cpns/hot-recommend'
 import MRNewAlbum from './c-cpns/new-album'
 import MRRankList from './c-cpns/rank-list'
+import MRLogin from './c-cpns/login'
 import { Content, ContentRight, ContentLeft } from './style'
 
 function MRRecommend(props) {
@@ -32,7 +33,9 @@ function MRRecommend(props) {
           <MRNewAlbum></MRNewAlbum>
           <MRRankList></MRRankList>
         </ContentLeft>
-        <ContentRight></ContentRight>
+        <ContentRight>
+          <MRLogin />
+        </ContentRight>
       </Content>
       {
         // topBanners.map(item => {

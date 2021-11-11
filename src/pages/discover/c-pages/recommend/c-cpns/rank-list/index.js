@@ -2,7 +2,7 @@ import React, { memo, useEffect } from 'react'
 
 import MRRecHeader from '@/components/rec-header'
 import MRTopRanking from '@/components/top-ranking'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { getTopListAction } from '../../store/actionCreaters'
 import { RankingWrapper } from './style'
 
@@ -14,7 +14,7 @@ export default memo(function MRRankList() {
     upRanking: state.getIn(['recommend', 'upRanking']),
     newRanking: state.getIn(['recommend', 'newRanking']),
     originRanking: state.getIn(['recommend', 'originRanking']),
-  }))
+  }), shallowEqual)
   console.log('榜单信息', upRanking, newRanking, originRanking)
   // other hooks
   useEffect(() => {
