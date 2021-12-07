@@ -1,6 +1,6 @@
 import * as actionTypes from './constants'
 
-import { getBanners, getNewAlbums, getRecommend, getTopList } from '../../../../../services/recommend'
+import { getBanners, getNewAlbums, getRecommend, getTopList, getArtistList } from '../../../../../services/recommend'
 
 
 // 要传入dispatch的action，标准意义上的action
@@ -27,6 +27,10 @@ const changeNewRankingAction = (res) => ({
 const changeOriginRankingAction = (res) => ({
   type: actionTypes.CHANGE_ORIGIN_RANKING,
   originRanking: res.playlist
+})
+const changeSettleSingerAction = (res) => ({
+  type: actionTypes.CHANGE_SETTLE_SINGER,
+  settleSingers: res.artists
 })
 
 // 通过thunk中间件支持后才能使用的异步操作action
@@ -69,6 +73,14 @@ export const getTopListAction = (idx) => {
           break
         default:    
       }
+    })
+  }
+}
+
+export const getSettleSingersAction = () => {
+  return (dispatch) => {
+    getArtistList(5, 5001).then((res) => {
+      dispatch(changeSettleSingerAction(res))
     })
   }
 }

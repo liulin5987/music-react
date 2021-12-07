@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const DiscoverWrapper = styled.div``
+export const DiscoverWrapper = styled.div`
+background-color: #f5f5f5;
+`
 export const DiscoverHeader = styled.div`
   height: 30px;
   width: 100%;

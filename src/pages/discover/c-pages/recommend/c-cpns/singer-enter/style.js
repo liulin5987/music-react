@@ -2,18 +2,22 @@ import styled from 'styled-components'
 
 export const MRSingerEnterWrapper = styled.div`
 padding: 20px;
+background-color: #fff;
 .title {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
 }
-.aritists {
+.artists {
   display: flex;
   flex-direction: column;
   .artist {
     width: 210px;
     height: 62px;
     display: flex;
+    border: 1px solid #e9e9e9;
+    margin-top: 14px;
+    background-color: #fafafa;
     .cover {
       width: 62px;
       height: 62px;
@@ -32,5 +36,14 @@ padding: 20px;
       }
     }
   }
+}
+.apply {
+  width: 210px;
+  height: 30px;
+  margin-top: 14px;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid #e9e9e9;
+  border-radius: 5px;
 }
 `

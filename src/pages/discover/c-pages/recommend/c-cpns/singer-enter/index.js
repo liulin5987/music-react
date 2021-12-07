@@ -1,22 +1,44 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { getSettleSingersAction } from '../../store/actionCreaters'
+import { MRSingerEnterWrapper } from './style'
 
 export default memo(function MRSingerEnter() {
+  // state
+  // redux hooks
+  const dispatch = useDispatch()
+  const { settleSingers } = useSelector(
+    (state) => ({
+      settleSingers: state.getIn(['recommend', 'settleSingers'])
+    }),
+    shallowEqual
+  )
+  console.log('获取到的热门歌手列表', settleSingers)
+  // other hooks
+  useEffect(() => {
+    dispatch(getSettleSingersAction())
+  }, [dispatch])
   return (
-    <div>
-      <div className="title">
-        <div className="name">入驻歌手</div>
-        <div className="more">查看全部{'>'}</div>
+    <MRSingerEnterWrapper>
+      <div className='title'>
+        <div className='name'>入驻歌手</div>
+        <div className='more'>查看全部{'>'}</div>
       </div>
-      <div className="artists">
-        <div className="artist">
-          <img src="" alt="" className="cover" />
-          <div className="info">
-            <div className="name"></div>
-            <div className="desc"></div>
+      {settleSingers.map((item) => {
+        return (
+          <div className='artists' key={item.id}>
+            <div className='artist'>
+              <img src={item.picUrl} alt='' className='cover' />
+              <div className='info'>
+                <div className='name'>{item.name}</div>
+                <div className='desc'>{item.alias[0]}</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="applay"></div>
-    </div>
+        )
+      })}
+
+      <div className='apply'>申请成为网易音乐人</div>
+    </MRSingerEnterWrapper>
   )
 })

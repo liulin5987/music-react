@@ -8,6 +8,7 @@ import MRHotRecommend from './c-cpns/hot-recommend'
 import MRNewAlbum from './c-cpns/new-album'
 import MRRankList from './c-cpns/rank-list'
 import MRLogin from './c-cpns/login'
+import MRSingerEnter from './c-cpns/singer-enter'
 import { Content, ContentRight, ContentLeft } from './style'
 
 function MRRecommend(props) {
@@ -35,6 +36,7 @@ function MRRecommend(props) {
         </ContentLeft>
         <ContentRight>
           <MRLogin />
+          <MRSingerEnter />
         </ContentRight>
       </Content>
       {

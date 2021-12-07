@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import MRRecHeader from '@/components/rec-header'
 import { getAlubmAction } from '../../store/actionCreaters'
@@ -13,7 +13,7 @@ export default memo(function MRNewAlbum() {
   const dispatch = useDispatch()
   const { albums } = useSelector((state) => ({
     albums: state.getIn(['recommend', 'albums'])
-  }))
+  }), shallowEqual)
   console.log('专辑信息', albums)
   // other hooks
   const pageRef = useRef()
