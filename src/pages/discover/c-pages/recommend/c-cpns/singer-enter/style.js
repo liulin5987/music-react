@@ -45,5 +45,10 @@ background-color: #fff;
   line-height: 30px;
   border: 1px solid #e9e9e9;
   border-radius: 5px;
+  cursor: pointer;
+  background: #fff;
+  &:hover {
+    background: #fafafa;
+  }
 }
 `

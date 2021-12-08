@@ -8,7 +8,7 @@ display: flex;
 
 export const ContentLeft = styled.div`
 width: 730px;
-padding: 20px 20px 40px;
+padding: 20px 20px;
 border: 1px solid #ccc;
 border-bottom: none;
 /* background-color: orange; */
@@ -16,7 +16,7 @@ border-bottom: none;
 
 export const ContentRight = styled.div`
 width: 250px;
-background-color: green;
+background-color: #fff;
 border-top: 1px solid #ccc;
 border-right: 1px solid #ccc;
 `

@@ -6,6 +6,8 @@ export const MRFooter = styled.div`
   width: 100%;
   height: 173px;
   background-color: #f2f2f2;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
   .content {
     display: flex;
     justify-content: space-between;

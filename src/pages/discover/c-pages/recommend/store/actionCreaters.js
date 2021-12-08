@@ -1,6 +1,6 @@
 import * as actionTypes from './constants'
 
-import { getBanners, getNewAlbums, getRecommend, getTopList, getArtistList } from '../../../../../services/recommend'
+import { getBanners, getNewAlbums, getRecommend, getTopList, getArtistList, getHotAnchors } from '../../../../../services/recommend'
 
 
 // 要传入dispatch的action，标准意义上的action
@@ -31,6 +31,10 @@ const changeOriginRankingAction = (res) => ({
 const changeSettleSingerAction = (res) => ({
   type: actionTypes.CHANGE_SETTLE_SINGER,
   settleSingers: res.artists
+})
+const changeHotAnchorAction = (res) => ({
+  type: actionTypes.CHANGE_HOT_ANCHOR,
+  hotAnchors: res.data.list
 })
 
 // 通过thunk中间件支持后才能使用的异步操作action
@@ -81,6 +85,15 @@ export const getSettleSingersAction = () => {
   return (dispatch) => {
     getArtistList(5, 5001).then((res) => {
       dispatch(changeSettleSingerAction(res))
+    })
+  }
+}
+
+export const getHotAnchorsAction = () => {
+  return (dispatch) => {
+    getHotAnchors(5).then((res) => {
+      console.log('热门主播', res)
+      dispatch(changeHotAnchorAction(res))
     })
   }
 }

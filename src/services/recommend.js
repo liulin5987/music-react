@@ -42,3 +42,12 @@ export function getArtistList(limit, cat) {
     }
   })
 }
+
+export function getHotAnchors(limit) {
+  return request({
+    url: "/dj/toplist/newcomer",
+    params: {
+      limit
+    }
+  })
+}
