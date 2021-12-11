@@ -22,8 +22,12 @@ const routers = [
   {
     path: '/discover',
     component: discover,
-    // render: () => <Redirect to='/discover/recommend' />,
     routers: [
+      {
+        path: '/discover',
+        exact: true,
+        render: () => <Redirect to='/discover/recommend' />
+      },
       {
         path: '/discover/recommend',
         component: recommend

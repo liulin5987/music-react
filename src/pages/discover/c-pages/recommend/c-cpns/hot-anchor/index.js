@@ -16,7 +16,6 @@ export default memo(function MRHotAnchor() {
     }),
     shallowEqual
   )
-  console.log('获取到的热门主播数据', hotAnchors)
   // other hooks
   useEffect(() => {
     dispatch(getHotAnchorsAction())

@@ -14,7 +14,6 @@ export default memo(function MRNewAlbum() {
   const { albums } = useSelector((state) => ({
     albums: state.getIn(['recommend', 'albums'])
   }), shallowEqual)
-  console.log('专辑信息', albums)
   // other hooks
   const pageRef = useRef()
   useEffect(() => {

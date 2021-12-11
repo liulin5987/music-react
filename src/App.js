@@ -8,6 +8,7 @@ import { renderRoutes } from 'react-router-config'
 import { HashRouter } from 'react-router-dom'
 import MRAppHeader from '@/components/app-header'
 import MRAppFooter from '@/components/app-footer'
+import MRPlayerBar from '@/pages/player/app-play-bar'
 
 export default memo(function App() {
   return (
@@ -16,6 +17,7 @@ export default memo(function App() {
         <MRAppHeader />
         {renderRoutes(routes)}
         <MRAppFooter />
+        <MRPlayerBar />
       </HashRouter>
     </Provider>
   )

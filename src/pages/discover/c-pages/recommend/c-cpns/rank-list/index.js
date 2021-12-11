@@ -15,7 +15,6 @@ export default memo(function MRRankList() {
     newRanking: state.getIn(['recommend', 'newRanking']),
     originRanking: state.getIn(['recommend', 'originRanking']),
   }), shallowEqual)
-  console.log('榜单信息', upRanking, newRanking, originRanking)
   // other hooks
   useEffect(() => {
     dispatch(getTopListAction(0))

@@ -19,6 +19,7 @@ export const MRLoginWrapper = styled.div`
       text-align: center;
       line-height: 30px;
       color: #fff;
+      cursor: pointer;
     }
   }
 `

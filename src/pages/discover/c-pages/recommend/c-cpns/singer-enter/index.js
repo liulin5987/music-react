@@ -13,7 +13,6 @@ export default memo(function MRSingerEnter() {
     }),
     shallowEqual
   )
-  console.log('获取到的热门歌手列表', settleSingers)
   // other hooks
   useEffect(() => {
     dispatch(getSettleSingersAction())
