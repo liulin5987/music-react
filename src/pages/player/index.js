@@ -1,11 +1,14 @@
 import React, { memo } from 'react'
 
-import { MRPlayerWrapper } from './style'
+import { MRPlayerWrapper, PlayerLeft, PlayerRight } from './style'
 export default memo(function index() {
   return (
     <MRPlayerWrapper>
       <div className="content wrap-v2">
-      播放器
+      <PlayerLeft>
+        
+      </PlayerLeft>
+      <PlayerRight></PlayerRight>
       </div>
     </MRPlayerWrapper>
   )

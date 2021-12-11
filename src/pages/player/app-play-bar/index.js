@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { Control, PlayerBarWrapper } from './style'
+import { Control, PlayerBarWrapper, PlayInfo } from './style'
 
 export default memo(function MRPlaybar() {
   return (
@@ -10,6 +10,9 @@ export default memo(function MRPlaybar() {
           <button className='sprite_player btn play'></button>
           <button className='sprite_player btn next'></button>
         </Control>
+        <PlayInfo>
+          
+        </PlayInfo>
       </div>
     </PlayerBarWrapper>
   )
