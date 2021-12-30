@@ -25,7 +25,8 @@ export default memo(function HYSongsCover(props) {
         {info.name}
       </div>
       <div className="cover-source text-nowrap">
-        by {info.copywriter || info.creator.nickname}
+        {/* by {info.copywriter || info.creator?.nickname} */}
+        { info.copywriter && ('by ' + info.copywriter || info.creator?.nickname) }
       </div>
     </SongsCoverWrapper>
   )

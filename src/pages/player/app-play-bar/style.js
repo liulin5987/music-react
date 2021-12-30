@@ -37,7 +37,7 @@ export const Control = styled.div`
   .prev {
     background-position: 0 -130px;
   }
-
+  /* 通过向control标签内传入的是否播放的参数来修改播放icon */
   .play {
     width: 36px;
     height: 36px;
@@ -74,7 +74,7 @@ export const PlayInfo = styled.div`
       position: relative;
       top: 8px;
       left: 8px;
-
+      display: flex;
       .singer-name {
         color: #a1a1a1;
         margin-left: 10px;
@@ -105,6 +105,7 @@ export const PlayInfo = styled.div`
           border: none;
           margin-top: -7px;
           background: url(${spirt_icons}) 0 -250px;
+          box-shadow: none;
         }
       }
 
@@ -116,6 +117,58 @@ export const PlayInfo = styled.div`
           margin: 0 3px;
         }
       }
+    }
+  }
+`
+
+export const Operator = styled.div`
+  display: flex;
+  position: relative;
+  top: 5px;
+
+  .btn {
+    width: 25px;
+    height: 25px;
+  }
+
+  .favor {
+    background-position: -88px -163px;
+  }
+
+  .share {
+    background-position: -114px -163px;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    width: 126px;
+    padding-left: 13px;
+    background-position: -147px -248px;
+
+    .volume {
+      background-position: -2px -248px;
+    }
+
+    .loop {
+      background-position: ${(props) => {
+        switch (props.sequence) {
+          case 1:
+            return '-66px -248px'
+          case 2:
+            return '-66px -344px'
+          default:
+            return '-3px -344px'
+        }
+      }};
+    }
+
+    .playlist {
+      padding-left: 18px;
+      text-align: center;
+      color: #ccc;
+      width: 59px;
+      background-position: -42px -68px;
     }
   }
 `

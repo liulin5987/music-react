@@ -57,6 +57,7 @@ export const getRecommendAction = () => {
 export const getAlubmAction = () => {
   return (dispatch) => {
     getNewAlbums(10).then((res) => {
+      console.log('获取到的专辑信息', res)
       dispatch(changeAlbumAction(res))
     })
   }
