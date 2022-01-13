@@ -118,4 +118,10 @@ body, textarea, select, input, button {
   color: #fff;
 }
 
+.over-one-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 

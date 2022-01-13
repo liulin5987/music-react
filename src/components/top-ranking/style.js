@@ -26,6 +26,7 @@ export const RankingWrapper = styled.div`
       height: 32px;
       padding-left: 15px;
       font-size: 12px;
+      position: relative;
       .index {
         width: 35px;
         text-align: center;
@@ -41,6 +42,7 @@ export const RankingWrapper = styled.div`
       .name {
         flex: 1;
         height: 32px;
+        width: 80px;
         line-height: 32px;
       }
       .operate {
@@ -48,7 +50,9 @@ export const RankingWrapper = styled.div`
         align-items: center;
         display: none;
         width: 82px;
-
+        position: absolue;
+        top: 0;
+        right: 0;
         .btn {
           width: 17px;
           height: 17px;

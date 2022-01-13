@@ -29,7 +29,7 @@ export default memo(function MRTopRanking(props) {
         {tracks?.slice(0, 10).map((item, index) => (
           <div className='item' key={item.id}>
             <div className='index'>{index + 1}</div>
-            <a href='todo' className='name'>
+            <a href='todo' className='name over-one-line'>
               {item.name}
             </a>
             <div className='operate'>
