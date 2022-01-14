@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import playpanelBg from '@/assets/img/playpanel_bg.png'
 
 export const PanelWrapper = styled.div`
   position: absolute;
@@ -8,6 +9,21 @@ export const PanelWrapper = styled.div`
   width: 986px;
   height: 301px;
   color: #e2e2e2;
-  background-color: rbga(0, 0, 0, .8);
-  outline: 1px solid black;
+  background-color: rbga(0, 0, 0, 0.8);
+  .main {
+    position: relative;
+    display: flex;
+    height: 260px;
+    overflow: hidden;
+    background: url(${playpanelBg}) -1014px 0 repeat-y;
+
+    .image {
+      position: absolute;
+      left: 2px;
+      top: -360px;
+      width: 980px;
+      height: auto;
+      opacity: 0.2;
+    }
+  }
 `

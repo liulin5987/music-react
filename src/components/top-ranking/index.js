@@ -1,4 +1,7 @@
 import React, { memo } from 'react'
+import { useDispatch } from 'react-redux'
+
+import { getSongDetailAction } from '../../pages/player/store/actionCreators'
 import { getSizeImage } from '../../utils/format-utils'
 
 import { RankingWrapper } from './style'
@@ -8,10 +11,12 @@ export default memo(function MRTopRanking(props) {
   const { info } = props
   const { tracks = [] } = info
   // redux hooks
-
+  const dispatch = useDispatch()
   // other hooks
   // ohter handle
-  
+  const playMusic = (item) => {
+    dispatch(getSongDetailAction(item.id))
+  }
   return (
     <RankingWrapper>
       <div className='top'>
@@ -33,7 +38,7 @@ export default memo(function MRTopRanking(props) {
               {item.name}
             </a>
             <div className='operate'>
-              <button className='btn sprite_02 play'></button>
+              <button className='btn sprite_02 play' onClick={(e) => {playMusic(item)}}></button>
               <button className='btn sprite_icon2 addto'></button>
               <button className='btn sprite_02 favor'></button>
             </div>

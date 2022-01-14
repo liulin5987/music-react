@@ -71,12 +71,28 @@ const defaultState = Map({
     "cp": 14026,
     "publishTime": 1231516800000
   },
+  playSequence: 0,  //  0 顺序 1 随机 2 单曲循环
+  currentSongIndex: 0,
+  playList: [],
+  currentLyrics: [],
+  currentLyricIndex: -1
 })
 
 function reducer(state = defaultState, action) {
   switch(action.type) {
     case actionTypes.CHANGE_CURRENT_SONG:
       return state.set("currentSong", action.song)
+    case actionTypes.CHANGE_PLAY_LIST:
+      return state.set("playList", action.playList)
+    case actionTypes.CHANGE_PLAY_SEQUENCE:
+      return state.set("playSequence", action.sequence)
+    case actionTypes.CHANGE_CURRENT_SONG_INDEX:
+      return state.set("currentSongIndex", action.index)  
+    case actionTypes.CHANGE_LYRIC:
+      console.log(action.lyrics, '传入的歌词')
+      return state.set("currentLyrics", action.lyrics)
+    case actionTypes.CHANGE_CURRENT_LYRIC_INDEX:
+      return state.set("currentLyricIndex", action.index)
     default:
       return state
   }

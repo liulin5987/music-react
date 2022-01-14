@@ -7,7 +7,7 @@ import { Control, PlayerBarWrapper, PlayInfo, Operator } from './style'
 import MRPlayPanel from '../app-play-panel/index'
 
 import { getPlaySong, formatMinuteSecond, getSizeImage } from '@/utils/format-utils'
-import { getSongDetailAction } from '../store/actionCreators'
+import { changePlaySequenceAction, getSongDetailAction, changePlaySongAction, changeCurrentLyricIndexAction } from '../store/actionCreators'
 import { useDispatch } from 'react-redux'
 
 export default memo(function MRPlaybar() {
@@ -18,11 +18,16 @@ export default memo(function MRPlaybar() {
   const [currentTime, setCurrentTime] = useState(0)
   const [progress, setProgress] = useState(0)
   const [isChanging, setIsChanging] = useState(false)
+  const [panelShow, setpanelShow] = useState(false)
 
   // redux hooks
-  const { currentSong } = useSelector(
+  const { currentSong, playSequence, playList, currentLyrics, currentLyricIndex } = useSelector(
     (state) => ({
-      currentSong: state.getIn(['player', 'currentSong'])
+      currentSong: state.getIn(['player', 'currentSong']),
+      playSequence: state.getIn(["player", "playSequence"]),
+      playList: state.getIn(["player", "playList"]),
+      currentLyrics: state.getIn(["player", "currentLyrics"]),
+      currentLyricIndex: state.getIn(["player", "currentLyricIndex"])
     }),
     shallowEqual
   )
@@ -59,6 +64,28 @@ export default memo(function MRPlaybar() {
       setCurrentTime(currentTime)
       setProgress(((currentTime * 1000) / duration) * 100)
     }
+    // 动态歌词，通过时间检测来改变当前的index，检测index的变化来进行滚动
+    let lrcLength = currentLyrics.length
+    let i = 0
+    for (; i < lrcLength; i++) {
+      const lrcTime = currentLyrics[i].time
+      if (currentTime * 1000 < lrcTime) {
+        break
+      }
+    }
+    const finalIndex = i - 1
+    if (finalIndex !== currentLyricIndex) {
+      dispatch(changeCurrentLyricIndexAction(finalIndex))
+    }
+  }
+
+  const timeEnded = () => {
+    if (playSequence === 2 || playList.length === 1) {
+      audioRef.current.currentTime = 0
+      audioRef.current.play()
+    } else {
+      dispatch(changePlaySongAction(1))
+    }
   }
 
   const sliderChange = useCallback(
@@ -86,12 +113,12 @@ export default memo(function MRPlaybar() {
     <PlayerBarWrapper className='sprite_player'>
       <div className='content wrap-v2'>
         <Control isPlaying={isPlaying}>
-          <button className='sprite_player btn prev'></button>
+          <button className='sprite_player btn prev' onClick={(e => dispatch(changePlaySongAction(-1)))}></button>
           <button
             className='sprite_player btn play'
             onClick={(e) => play()}
           ></button>
-          <button className='sprite_player btn next'></button>
+          <button className='sprite_player btn next' onClick={e => dispatch(changePlaySongAction(1))}></button>
         </Control>
         <PlayInfo>
           <div className='image'>
@@ -126,20 +153,20 @@ export default memo(function MRPlaybar() {
             </div>
           </div>
         </PlayInfo>
-        <Operator>
+        <Operator sequence={playSequence}>
           <div className='left'>
             <button className='sprite_player btn favor'></button>
             <button className='sprite_player btn share'></button>
           </div>
           <div className='right sprite_player'>
             <button className='sprite_player btn volume'></button>
-            <button className='sprite_player btn loop'></button>
-            <button className='sprite_player btn playlist'></button>
+            <button className='sprite_player btn loop' onClick={e => dispatch(changePlaySequenceAction(playSequence + 1))}></button>
+            <button className='sprite_player btn playlist' onClick={(e) => {setpanelShow(!panelShow) }}></button>
           </div>
         </Operator>
       </div>
-      <audio ref={audioRef} onTimeUpdate={timeUpdate}></audio>
-      <MRPlayPanel />
+      <audio ref={audioRef} onTimeUpdate={timeUpdate} onEnded={timeEnded}></audio>
+      {panelShow && <MRPlayPanel />}
     </PlayerBarWrapper>
   )
 })
